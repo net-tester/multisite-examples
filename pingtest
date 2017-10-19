@@ -1,0 +1,14 @@
+#!/bin/bash
+
+logger -t pingtest "[start]" $@
+
+export VLAN_ID=$1
+shift
+export SITES=$@
+
+cd /home/hanabi/net-tester/multisite-examples
+# cd /home/tajima/repo/multisite-examples
+bundle exec rake --silent
+
+logger -t pingtest "[end] code:" $?
+
